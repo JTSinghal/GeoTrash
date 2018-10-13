@@ -5,13 +5,18 @@ var curr = {
 };
 
 // Group of all pins
-var pcbPins = L.layerGroup();
+/*var pcbPins = L.layerGroup();
 var plasPins = L.layerGroup();
 var metalPins = L.layerGroup();
 var glassPins = L.layerGroup();
 var bbPins = L.layerGroup();
 var miscPins = L.layerGroup();
-
+*/
+var overlays = {}
+for(var i = 0; i < materials.length; i++){
+    overlays[materials[i]] = L.layerGroup();
+}
+/*
 var overlays = {
 	"Paper": pcbPins,
   "Plastic": plasPins,
@@ -19,7 +24,7 @@ var overlays = {
   "Glass": glassPins,
   "Batteries": bbPins,
   "Misc": miscPins
-};
+};*/
 
 // Initial Map setup
 function initMap() {
@@ -55,28 +60,13 @@ function dropPin(lat, lng, floor, code) {
   // L.marker([lat, lng], {icon: pinIcon}).addTo(map).bindPopup(popupContent);
   var pin = L.marker([lat, lng], {icon: pinIcon}).bindPopup(popupContent);
   sortPins(decode(code), pin);
-  L.control.layers(overlays).addTo(map);
 }
 
 // Sorts pins into different layer groups
 function sortPins(info, pin) {
-  if (info.includes("Paper/Cardboard")) {
-    pin.addTo(pcbPins);
-  }
-  if (info.includes("Plastic")) {
-    pin.addTo(plasPins);
-  }
-  if (info.includes("Metals")) {
-    pin.addTo(metalPins);
-  }
-  if (info.includes("Glass")) {
-    pin.addTo(glassPins);
-  }
-  if (info.includes("Batteries/Bulbs")) {
-    pin.addTo(bbPins);
-  }
-  if (info.includes("Miscellaneous Electronics")) {
-    pin.addTo(miscPins);
+  for(var i = 0; i < info.length; i++){
+       console.log(info[i]);
+       pin.addTo(overlays[info[i]]); 
   }
 }
 
@@ -100,5 +90,6 @@ function main(){
             dropPin(bins[i].lat, bins[i].lng, bins[i].floor, bins[i].code);
         }
     });
+    L.control.layers(overlays).addTo(map);
 }
 main();
