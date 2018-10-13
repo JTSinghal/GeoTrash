@@ -4,9 +4,28 @@ var curr = {
   lng: ''
 };
 
+<<<<<<< HEAD
 // Run on startup
 initMap();
 findLocation();
+=======
+// Group of all pins
+var pcbPins = L.layerGroup();
+var plasPins = L.layerGroup();
+var metalPins = L.layerGroup();
+var glassPins = L.layerGroup();
+var bbPins = L.layerGroup();
+var miscPins = L.layerGroup();
+
+var overlays = {
+	"Paper": pcbPins,
+  "Plastic": plasPins,
+  "Metal": metalPins,
+  "Glass": glassPins,
+  "Batteries": bbPins,
+  "Misc": miscPins
+};
+>>>>>>> 47c6147e0b0cbcaa8e5d538ddbf8df316e12b820
 
 // Initial Map setup
 function initMap() {
@@ -28,9 +47,14 @@ function findLocation() {
   navigator.geolocation.getCurrentPosition(getlatlng);
 }
 
+<<<<<<< HEAD
 dropPin(40.4268, -86.9195, 1, "asf");
 dropPin(40.43, -86.92, 3, "asf");
+=======
+dropPin(40.4268, -86.9195, 1, 24);
+>>>>>>> 47c6147e0b0cbcaa8e5d538ddbf8df316e12b820
 
+// Drops recycle pins
 function dropPin(lat, lng, floor, code) {
   var pinIcon = L.icon({
     iconUrl: 'Images/geoTrashLogo.png',
@@ -38,7 +62,58 @@ function dropPin(lat, lng, floor, code) {
     iconAnchor:   [20, 20], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
   });
-  var popupContent = "Floor: " + floor;
+  var popupContent = "FILL THIS IN LATER";
 
-  L.marker([lat, lng], {icon: pinIcon}).addTo(map).bindPopup(popupContent);
+  // L.marker([lat, lng], {icon: pinIcon}).addTo(map).bindPopup(popupContent);
+  var pin = L.marker([lat, lng], {icon: pinIcon}).bindPopup(popupContent);
+  sortPins(decode(code), pin);
+  L.control.layers(overlays).addTo(map);
 }
+
+// Sorts pins into different layer groups
+function sortPins(info, pin) {
+  if (info.includes("Paper/Cardboard")) {
+    pin.addTo(pcbPins);
+  }
+  if (info.includes("Plastic")) {
+    pin.addTo(plasPins);
+  }
+  if (info.includes("Metals")) {
+    pin.addTo(metalPins);
+  }
+  if (info.includes("Glass")) {
+    pin.addTo(glassPins);
+  }
+  if (info.includes("Batteries/Bulbs")) {
+    pin.addTo(bbPins);
+  }
+  if (info.includes("Miscellaneous Electronics")) {
+    pin.addTo(miscPins);
+  }
+}
+<<<<<<< HEAD
+=======
+
+function getBins(callback){
+    l = []
+    $.get('/retrieve', function(d){
+        for(var p in d){
+            l.push(d[p]);
+        }
+        if(callback)callback(l);
+    });
+}
+
+function main(){
+    // Run on startup
+    initMap();
+    findLocation();
+    getBins(function(bins){
+        console.log(bins);
+        for(var i = 0; i < bins.length; i++){
+            dropPin(bins[i].lat, bins[i].lng, bins[i].floor, bins[i].code);
+        }
+    });
+}
+main();
+>>>>>>> 47c6147e0b0cbcaa8e5d538ddbf8df316e12b820
