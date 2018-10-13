@@ -4,9 +4,6 @@ var curr = {
   lng: ''
 };
 
-// Run on startup
-initMap();
-findLocation();
 
 // Initial Map setup
 function initMap() {
@@ -28,8 +25,6 @@ function findLocation() {
   navigator.geolocation.getCurrentPosition(getlatlng);
 }
 
-dropPin(40.4268, -86.9195, 1, "asf");
-dropPin(40.43, -86.92, 3, "asf");
 
 function dropPin(lat, lng, floor, code) {
   var pinIcon = L.icon({
@@ -42,3 +37,35 @@ function dropPin(lat, lng, floor, code) {
 
   L.marker([lat, lng], {icon: pinIcon}).addTo(map).bindPopup(popupContent);
 }
+
+function getBins(callback){
+    l = []
+    $.get('/retrieve', function(d){
+        for(var p in d){
+            l.push(d[p]);
+        }
+        if(callback)callback(l);
+    });
+}
+
+function main(){ 
+    // Run on startup
+    initMap();
+    findLocation();
+    getBins(function(bins){ 
+        console.log(bins);
+        for(var i = 0; i < bins.length; i++){
+            dropPin(bins[i].lat, bins[i].lng, bins[i].floor, bins[i].code);
+        }
+    });
+}
+main();
+
+
+
+
+
+
+
+
+
