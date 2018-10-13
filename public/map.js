@@ -20,7 +20,6 @@ function initMap() {
 
 // Finds current location
 function findLocation() {
-  // var lat, lng;
   var getlatlng = function(position) {
     curr.lat = position.coords.latitude;
     curr.lng = position.coords.longitude;
@@ -29,13 +28,17 @@ function findLocation() {
   navigator.geolocation.getCurrentPosition(getlatlng);
 }
 
-// Recycle icon
-var recycleIcon = L.Icon.extend({
-    options: {
-        iconSize:     [38, 95],
-        shadowSize:   [50, 64],
-        iconAnchor:   [22, 94],
-        shadowAnchor: [4, 62],
-        popupAnchor:  [-3, -76]
-    }
-});
+dropPin(40.4268, -86.9195, 1, "asf");
+dropPin(40.43, -86.92, 3, "asf");
+
+function dropPin(lat, lng, floor, code) {
+  var pinIcon = L.icon({
+    iconUrl: 'Images/recycleLocation.png',
+    iconSize:     [38, 38], // size of the icon
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+  });
+  var popupContent = "Floor: " + floor;
+
+  L.marker([lat, lng], {icon: pinIcon}).addTo(map).bindPopup(popupContent);
+}
