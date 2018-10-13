@@ -13,12 +13,22 @@ db = mysql.connector.connect(
 c = db.cursor()
 print(os.path.dirname(__file__))
 public_root = os.path.join(os.path.dirname(__file__), 'public')
+images_root = os.path.join(os.path.dirname(__file__), 'Images')
 
 class MainHandler(web.RequestHandler):
     def get(self):
+        self.render("geotrash.html", title="GeoTrash")
+
+class Retrieve(web.RequestHandler):
+    def get(self):
         c.execute("select * from bins")
         r = c.fetchall()
-        self.render("geotrash.html", title="GeoTrash", items = r)
+        d = {}
+        index = 0
+        for i in r:
+            d[index] = {"lat":i[0], "lng": i[1], "code": i[2], "floor":i[3]}
+            index += 1
+        self.write(d)
 
 class PostHandler(web.RequestHandler):
     def post(self):
@@ -36,7 +46,10 @@ def make_app():
     return web.Application([
         (r"/add", PostHandler),
         (r"/", MainHandler),
-        (r'/public/(.*)', web.StaticFileHandler, {'path': public_root})
+        (r'/public/(.*)', web.StaticFileHandler, {'path': public_root}),
+        (r'/Images/(.*)', web.StaticFileHandler, {'path': images_root}),
+        (r"/retrieve", Retrieve)
+
     ])
 def main():
     app = make_app()
