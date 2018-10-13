@@ -45,8 +45,7 @@ function findLocation() {
   navigator.geolocation.getCurrentPosition(getlatlng);
 }
 
-dropPin(40.4268, -86.9195, 1, "asdfsa");
-//dropPin(40.43, -86.92, 3, "asf");
+dropPin(40.4268, -86.9195, 1, 24);
 
 // Drops recycle pins
 function dropPin(lat, lng, floor, code) {
@@ -66,7 +65,6 @@ function dropPin(lat, lng, floor, code) {
 
 // Sorts pins into different layer groups
 function sortPins(info, pin) {
-  info = ["Paper/Cardboard", "Plastic", "Metals"];
   if (info.includes("Paper/Cardboard")) {
     pin.addTo(pcbPins);
   }
