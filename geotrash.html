@@ -32,6 +32,19 @@
 		<div id="reportRecyclingWindow">
 			
 		</div>
+		<div id="data">
+            <ul>
+                {% for row in items %}
+                    <li>
+                        <p>Latitude: {{ row[0] }}</p>
+                        <p>Longitude: {{ row[1] }}</p>
+                        <p>Code: {{ row[2] }}</p>
+                        <p>Floor: {{ row[3] }}</p>
+                    
+                    </li>
+                {% end %}
+            </ul>
+		</div>
 
 		<div id="footer">
 			Copyright 2018 Ecomake Team 9

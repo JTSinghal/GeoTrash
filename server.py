@@ -15,7 +15,9 @@ public_root = os.path.join(os.path.dirname(__file__), 'public')
 
 class MainHandler(web.RequestHandler):
     def get(self):
-        self.render("geotrash.html", title="GeoTrash")
+        c.execute("select * from bins")
+        r = c.fetchall()
+        self.render("geotrash.html", title="GeoTrash", items = r)
 
 class PostHandler(web.RequestHandler):
     def post(self):
