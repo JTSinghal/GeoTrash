@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-
 <html>
 	<head>
-		<link type="text/css" rel="stylesheet" href="geotrashStylesheet.css">
-		<title>Unnamed Website</title>
+		<title>GeoTrash</title>
 
+		<!-- Meta Tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="EcoMake 2018 Purdue">
+
+		<!-- Leaflet Tags -->
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+			integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+			crossorigin=""/>
+		<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+		   integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+		   crossorigin=""></script>
+
+		<!-- Other Tags -->
+		<link type="text/css" rel="stylesheet" href="geotrashStylesheet.css">
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	</head>
@@ -33,12 +46,14 @@
 				<div id="routeButton" onclick="route()">Route</div>
 			</div>
 			<div id="map">
-				
+
 			</div>
 			<div id="reportRecyclingButton" onclick="showRecyclingReport()">
 				<h3>Report recycling bin</h3>
 			</div>
 		</div>
+
+		<!-- <div id="map"></div> -->
 
 		<div id="reportRecyclingWindow">
 			<p> If you're in a building, what floor are you on? </p>
@@ -65,7 +80,7 @@
                     <input class="whatCanBox" type="checkbox" name="Batteries" value = '16'> Batteries
                     <input class="whatCanBox" type="checkbox" name="Electronics" value = '32'> Electronics
 		    </div>
-			
+
 			<a href="">
 				<div id="reportRecyclingSubmitButton" onclick="addBin()">
 					<h3>Submit Report</h3>
@@ -79,6 +94,7 @@
 	</body>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="js/map.js"></script>
 	<script type="text/javascript" src="public/frontDesign.js"></script>
 	<script type="text/javascript" src="public/script.js"></script>
 

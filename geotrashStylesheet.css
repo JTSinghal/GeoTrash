@@ -7,8 +7,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -28,7 +28,7 @@ a{
 a:hover{
 	color: #4286f4;
 }
- 
+
 *{
 	padding: 0;
 	margin: 0;
@@ -141,7 +141,7 @@ img{
 }
 
 /*#reportRecyclingButton h3{
-	font-size: 
+	font-size:
 }*/
 
 #reportRecyclingWindow{ /*shows up after button is clicked*/
