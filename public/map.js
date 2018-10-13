@@ -4,6 +4,9 @@ var curr = {
   lng: ''
 };
 
+// Run on startup
+initMap();
+findLocation();
 
 // Initial Map setup
 function initMap() {
@@ -25,47 +28,17 @@ function findLocation() {
   navigator.geolocation.getCurrentPosition(getlatlng);
 }
 
+dropPin(40.4268, -86.9195, 1, "asf");
+dropPin(40.43, -86.92, 3, "asf");
 
 function dropPin(lat, lng, floor, code) {
   var pinIcon = L.icon({
-    iconUrl: 'Images/recycleLocation.png',
+    iconUrl: 'Images/geoTrashLogo.png',
     iconSize:     [38, 38], // size of the icon
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    iconAnchor:   [20, 20], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
   });
   var popupContent = "Floor: " + floor;
 
   L.marker([lat, lng], {icon: pinIcon}).addTo(map).bindPopup(popupContent);
 }
-
-function getBins(callback){
-    l = []
-    $.get('/retrieve', function(d){
-        for(var p in d){
-            l.push(d[p]);
-        }
-        if(callback)callback(l);
-    });
-}
-
-function main(){ 
-    // Run on startup
-    initMap();
-    findLocation();
-    getBins(function(bins){ 
-        console.log(bins);
-        for(var i = 0; i < bins.length; i++){
-            dropPin(bins[i].lat, bins[i].lng, bins[i].floor, bins[i].code);
-        }
-    });
-}
-main();
-
-
-
-
-
-
-
-
-
