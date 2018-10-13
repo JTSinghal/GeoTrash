@@ -1,0 +1,201 @@
+body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+a{
+	text-decoration: none;
+	color: black;
+	transition: color 0.2s;
+}
+
+a:hover{
+	color: #4286f4;
+}
+ 
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica;
+	font-weight: lighter;
+}
+
+#header{
+	height: 9vh;
+	width: 100%;
+	border-bottom: 1px solid black;
+	padding: 0 10vw;
+}
+
+#logo{
+	width: 25vh;
+	height: 100%;
+	float: left;
+}
+
+img{
+	max-height: 100%;
+	max-width: 100%;
+}
+
+#logoPic{
+	width: 9vh;
+	height: 100%;
+	float: left;
+}
+
+#logoText{
+	line-height: 27px;
+}
+
+#logoText h1{
+	font-size: 27px;
+}
+
+#findRecyclingWindow{
+	height: 80vh;
+	width: 100%;
+	border-bottom: 1px solid black;
+}
+
+#findRecyclingWindow p{
+	margin-top: 2vh;
+	text-align: center;
+}
+
+.selectForm{
+	width: 47vw;
+	height: 5vh;
+	margin: auto;
+}
+
+#findDropdown{
+	width: 40vw;
+	height: 4vh;
+	display: block;
+	float: left;
+}
+
+#routeButton{
+	width: 6vw;
+	height: 4vh;
+	border: 1px solid black;
+	border-radius: 25px;
+	font-size: 12px;
+	line-height: 4vh;
+	text-align: center;
+	transition: box-shadow 0.3s;
+	cursor: pointer;
+	float: right;
+}
+
+#routeButton:hover{
+	-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+#map{
+	margin: auto;
+	margin-top: 3vh;
+	height: 60vh;
+	width: 70vh;
+	border: 1px solid black;
+}
+
+#reportRecyclingButton{
+	margin: auto;
+	margin-top: 3vh;
+	width: 8vw;
+	height: 5vh;
+	border: 1px solid black;
+	border-radius: 25px;
+	font-size: 12px;
+	line-height: 5vh;
+	text-align: center;
+	transition: box-shadow 0.3s;
+	cursor: pointer;
+}
+
+#reportRecyclingButton:hover{
+	-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+/*#reportRecyclingButton h3{
+	font-size: 
+}*/
+
+#reportRecyclingWindow{ /*shows up after button is clicked*/
+	height: 0;
+	overflow: hidden;
+	width: 100%;
+	border-bottom: 1px solid black;
+	transition: 0.4s height;
+}
+
+#reportRecyclingWindow p{
+	margin-top: 2vh;
+	text-align: center;
+}
+
+#floorDropdown{
+	width: 40vw;
+	height: 4vh;
+	display: block;
+	margin: auto;
+	margin-bottom: 3vh;
+}
+
+#whatCan{
+	width: 60vw;
+	margin: auto;
+}
+
+.whatCanBox{
+	margin-left: 2vw;
+}
+
+#reportRecyclingSubmitButton{
+	margin: auto;
+	margin-top: 3vh;
+	width: 6vw;
+	height: 5vh;
+	border: 1px solid black;
+	border-radius: 25px;
+	font-size: 12px;
+	line-height: 5vh;
+	text-align: center;
+	transition: box-shadow 0.3s;
+	cursor: pointer;
+}
+
+#reportRecyclingSubmitButton:hover{
+	-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+#footer{
+	height: 9vh;
+	text-align: center;
+	line-height: 9vh;
+}

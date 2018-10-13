@@ -12,48 +12,65 @@
 	<body>
 		<div id="header">
 			<div id="logo">
-				<img src="Images/GeoTrashLogo.png"/>
-			</div>
-			<div id="findRecyclingButton">
-				Find a recycling bin near you!
-			</div>
-			<div id="reportRecyclingButton">
-				Report a new recycling bin!
+				<div id="logoPic">
+					<img src="Images/GeoTrashLogo.png"/>
+				</div>
+				<div id="logoText"><h1>GeoTrash</h1></div>
 			</div>
 		</div>
 
 		<div id="findRecyclingWindow">
-			What: <input type="text"><br>
-			<div id="mapToFind">
+			<p>What would you like to recycle? </p>
+			<div class="selectForm">
+				<select id="findDropdown">
+					<option value="paper">Paper/Cardboard</option>
+					<option value="plastic">Plastic</option>
+					<option value="metal">Metals</option>
+					<option value="glass">Glass</option>
+					<option value="batteries">Batteries/Bulbs</option>
+					<option value="electronics">Miscellaneous Electronics</option>
+				</select>
+				<div id="routeButton" onclick="route()">Route</div>
+			</div>
+			<div id="map">
 				
+			</div>
+			<div id="reportRecyclingButton" onclick="showRecyclingReport()">
+				<h3>Report recycling bin</h3>
 			</div>
 		</div>
 
 		<div id="reportRecyclingWindow">
-		    <div id="whatCan">
-                This bin accepts:
-                    <input class="whatCanBox" type="checkbox" name="Paper" value = '1' checked>
-                    <input class="whatCanBox" type="checkbox" name="Plastic" value = '2' checked>
-                    <input class="whatCanBox" type="checkbox" name="Metal" value = '4' checked>
-                    <input class="whatCanBox" type="checkbox" name="Glass" value = '8' checked>
-                    <input class="whatCanBox" type="checkbox" name="Batteries" value = '16'>
-                    <input class="whatCanBox" type="checkbox" name="Electronics" value = '32'>
+			<p> If you're in a building, what floor are you on? </p>
+			<select id="floorDropdown">
+				<option value="-1">Not In Building</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+			</select>
 
-                    <button onclick="addBin()">Submit</button>
+			<div id="whatCan">
+                This bin accepts:
+                    <input class="whatCanBox" type="checkbox" name="Paper" value = '1'> Paper/Cardboard
+                    <input class="whatCanBox" type="checkbox" name="Plastic" value = '2'> Plastic
+                    <input class="whatCanBox" type="checkbox" name="Metal" value = '4'> Metal
+                    <input class="whatCanBox" type="checkbox" name="Glass" value = '8'> Glass
+                    <input class="whatCanBox" type="checkbox" name="Batteries" value = '16'> Batteries
+                    <input class="whatCanBox" type="checkbox" name="Electronics" value = '32'> Electronics
 		    </div>
-		</div>
-		<div id="data">
-            <ul>
-                {% for row in items %}
-                    <li>
-                        <p>Latitude: {{ row[0] }}</p>
-                        <p>Longitude: {{ row[1] }}</p>
-                        <p>Code: {{ row[2] }}</p>
-                        <p>Floor: {{ row[3] }}</p>
-                    
-                    </li>
-                {% end %}
-            </ul>
+			
+			<a href="">
+				<div id="reportRecyclingSubmitButton" onclick="addBin()">
+					<h3>Submit Report</h3>
+				</div>
+			</a>
 		</div>
 
 		<div id="footer">
@@ -62,6 +79,7 @@
 	</body>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="public/frontDesign.js"></script>
+	<script type="text/javascript" src="public/script.js"></script>
 
 </html>
