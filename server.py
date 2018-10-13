@@ -11,7 +11,6 @@ db = mysql.connector.connect(
     database="geotrash"
 )
 c = db.cursor()
-print(os.path.dirname(__file__))
 public_root = os.path.join(os.path.dirname(__file__), 'public')
 images_root = os.path.join(os.path.dirname(__file__), 'Images')
 
