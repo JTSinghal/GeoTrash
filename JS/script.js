@@ -1,7 +1,0 @@
-function route(){
-	
-}
-
-function addBin(){
-
-}
