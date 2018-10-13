@@ -21,10 +21,6 @@ var overlays = {
   "Misc": miscPins
 };
 
-// Run on startup
-initMap();
-findLocation();
-
 // Initial Map setup
 function initMap() {
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -52,8 +48,8 @@ function dropPin(lat, lng, floor, code) {
   var pinIcon = L.icon({
     iconUrl: 'Images/recycleLocation.png',
     iconSize:     [38, 38], // size of the icon
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    iconAnchor:   [20, 20], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
   });
   var popupContent = "FILL THIS IN LATER";
 
