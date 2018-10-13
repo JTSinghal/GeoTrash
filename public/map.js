@@ -46,6 +46,11 @@ function findLocation() {
   navigator.geolocation.getCurrentPosition(getlatlng);
 }
 
+dropPin(40.4274, -86.9193, -1, 1);
+dropPin(40.4272, -86.9195, -1, 1);
+dropPin(40.4270, -86.9195, -1, 1);
+dropPin(40.4268, -86.9195, -1, 1);
+dropPin(40.4268, -86.9197, -1, 2);
 
 // Drops recycle pins
 function dropPin(lat, lng, floor, code) {
@@ -65,8 +70,9 @@ function dropPin(lat, lng, floor, code) {
 // Sorts pins into different layer groups
 function sortPins(info, pin) {
   for(var i = 0; i < info.length; i++){
-       console.log(info[i]);
+       //console.log(info[i]);
        pin.addTo(overlays[info[i]]); 
+       //console.log(overlays[info[i]])
   }
 }
 
