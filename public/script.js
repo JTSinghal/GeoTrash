@@ -1,7 +1,8 @@
 var materials = ["Paper/Cardboard", "Plastic", "Metals", "Glass", "Batteries/Bulbs", "Miscellaneous Electronics"]
 
-function route(){
-	
+function route(layerGroupObject){
+	//find closest pointer in group
+	//route to that pointer
 }
 
 function addBin(){
@@ -18,12 +19,12 @@ function addBin(){
     floorToSend = $('#floorDropdown').val();
     console.log(floorToSend);
 
-	/*$.post("/add", {
-		lat: ,
-		lon: ,
+	$.post("/add", {
+		lat: curr.lat,
+		lon: curr.lng,
 		code: codeToSend,
 		floor: floorToSend
-	});*/
+	});
 }
 
 function decode(code){
