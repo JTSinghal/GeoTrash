@@ -4,11 +4,6 @@ var curr = {
   lng: ''
 };
 
-<<<<<<< HEAD
-// Run on startup
-initMap();
-findLocation();
-=======
 // Group of all pins
 var pcbPins = L.layerGroup();
 var plasPins = L.layerGroup();
@@ -25,7 +20,6 @@ var overlays = {
   "Batteries": bbPins,
   "Misc": miscPins
 };
->>>>>>> 47c6147e0b0cbcaa8e5d538ddbf8df316e12b820
 
 // Initial Map setup
 function initMap() {
@@ -47,12 +41,6 @@ function findLocation() {
   navigator.geolocation.getCurrentPosition(getlatlng);
 }
 
-<<<<<<< HEAD
-dropPin(40.4268, -86.9195, 1, "asf");
-dropPin(40.43, -86.92, 3, "asf");
-=======
-dropPin(40.4268, -86.9195, 1, 24);
->>>>>>> 47c6147e0b0cbcaa8e5d538ddbf8df316e12b820
 
 // Drops recycle pins
 function dropPin(lat, lng, floor, code) {
@@ -91,8 +79,6 @@ function sortPins(info, pin) {
     pin.addTo(miscPins);
   }
 }
-<<<<<<< HEAD
-=======
 
 function getBins(callback){
     l = []
@@ -116,4 +102,3 @@ function main(){
     });
 }
 main();
->>>>>>> 47c6147e0b0cbcaa8e5d538ddbf8df316e12b820
