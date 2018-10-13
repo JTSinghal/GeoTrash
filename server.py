@@ -11,6 +11,7 @@ db = mysql.connector.connect(
     database="geotrash"
 )
 c = db.cursor()
+print(os.path.dirname(__file__))
 public_root = os.path.join(os.path.dirname(__file__), 'public')
 
 class MainHandler(web.RequestHandler):
@@ -35,7 +36,7 @@ def make_app():
     return web.Application([
         (r"/add", PostHandler),
         (r"/", MainHandler),
-        (r'/(.*)', web.StaticFileHandler, {'path': public_root})
+        (r'/public/(.*)', web.StaticFileHandler, {'path': public_root})
     ])
 def main():
     app = make_app()
