@@ -4,6 +4,26 @@ var curr = {
   lng: ''
 };
 
+// Group of all pins
+var pcbPins = L.layerGroup();
+var plasPins = L.layerGroup();
+var metalPins = L.layerGroup();
+var glassPins = L.layerGroup();
+var bbPins = L.layerGroup();
+var miscPins = L.layerGroup();
+
+var overlays = {
+	"Paper": pcbPins,
+  "Plastic": plasPins,
+  "Metal": metalPins,
+  "Glass": glassPins,
+  "Batteries": bbPins,
+  "Misc": miscPins
+};
+
+// Run on startup
+initMap();
+findLocation();
 
 // Initial Map setup
 function initMap() {
@@ -25,7 +45,9 @@ function findLocation() {
   navigator.geolocation.getCurrentPosition(getlatlng);
 }
 
+dropPin(40.4268, -86.9195, 1, 24);
 
+// Drops recycle pins
 function dropPin(lat, lng, floor, code) {
   var pinIcon = L.icon({
     iconUrl: 'Images/recycleLocation.png',
@@ -33,9 +55,34 @@ function dropPin(lat, lng, floor, code) {
     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
   });
-  var popupContent = "Floor: " + floor;
+  var popupContent = "FILL THIS IN LATER";
 
-  L.marker([lat, lng], {icon: pinIcon}).addTo(map).bindPopup(popupContent);
+  // L.marker([lat, lng], {icon: pinIcon}).addTo(map).bindPopup(popupContent);
+  var pin = L.marker([lat, lng], {icon: pinIcon}).bindPopup(popupContent);
+  sortPins(decode(code), pin);
+  L.control.layers(overlays).addTo(map);
+}
+
+// Sorts pins into different layer groups
+function sortPins(info, pin) {
+  if (info.includes("Paper/Cardboard")) {
+    pin.addTo(pcbPins);
+  }
+  if (info.includes("Plastic")) {
+    pin.addTo(plasPins);
+  }
+  if (info.includes("Metals")) {
+    pin.addTo(metalPins);
+  }
+  if (info.includes("Glass")) {
+    pin.addTo(glassPins);
+  }
+  if (info.includes("Batteries/Bulbs")) {
+    pin.addTo(bbPins);
+  }
+  if (info.includes("Miscellaneous Electronics")) {
+    pin.addTo(miscPins);
+  }
 }
 
 function getBins(callback){
@@ -48,11 +95,11 @@ function getBins(callback){
     });
 }
 
-function main(){ 
+function main(){
     // Run on startup
     initMap();
     findLocation();
-    getBins(function(bins){ 
+    getBins(function(bins){
         console.log(bins);
         for(var i = 0; i < bins.length; i++){
             dropPin(bins[i].lat, bins[i].lng, bins[i].floor, bins[i].code);
@@ -60,12 +107,3 @@ function main(){
     });
 }
 main();
-
-
-
-
-
-
-
-
-
