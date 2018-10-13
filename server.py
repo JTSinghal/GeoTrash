@@ -13,6 +13,7 @@ db = mysql.connector.connect(
 c = db.cursor()
 print(os.path.dirname(__file__))
 public_root = os.path.join(os.path.dirname(__file__), 'public')
+images_root = os.path.join(os.path.dirname(__file__), 'Images')
 
 class MainHandler(web.RequestHandler):
     def get(self):
@@ -36,7 +37,9 @@ def make_app():
     return web.Application([
         (r"/add", PostHandler),
         (r"/", MainHandler),
-        (r'/public/(.*)', web.StaticFileHandler, {'path': public_root})
+        (r'/public/(.*)', web.StaticFileHandler, {'path': public_root}),
+        (r'/Images/(.*)', web.StaticFileHandler, {'path': images_root})
+
     ])
 def main():
     app = make_app()
