@@ -31,30 +31,31 @@
 				<div id="logoPic">
 					<img src="Images/GeoTrashLogo.png"/>
 				</div>
-				<div id="logoText"><h1>GeoTrash</h1></div>
+				<div id="logoText" style="padding-top: 2.5vh"><h1>GeoTrash</h1></div>
 			</div>
 		</div>
+		<div id="transitionHeader"></div>
 
-		<div id="findRecyclingWindow">
-			<p>What would you like to recycle? </p>
-			<div class="selectForm">
-				<select id="findDropdown">
-					<option value="paper">Paper/Cardboard</option>
-					<option value="plastic">Plastic</option>
-					<option value="metal">Metals</option>
-					<option value="glass">Glass</option>
-					<option value="batteries">Batteries/Bulbs</option>
-					<option value="electronics">Miscellaneous Electronics</option>
-				</select>
-				<div id="routeButton" onclick="route()">Route</div>
-			</div>
-			<div id="map"></div>
-			<div id="reportRecyclingButton" onclick="showRecyclingReport()">
-				<h3>Add Recycling Bin</h3>
+		<div id="main">
+			<div id="findRecyclingWindow">
+				<p>What would you like to recycle? </p>
+				<div class="selectForm">
+					<select id="findDropdown">
+						<option value="paper">Paper/Cardboard</option>
+						<option value="plastic">Plastic</option>
+						<option value="metal">Metals</option>
+						<option value="glass">Glass</option>
+						<option value="batteries">Batteries/Bulbs</option>
+						<option value="electronics">Miscellaneous Electronics</option>
+					</select>
+					<div id="routeButton" onclick="route()">Route</div>
+				</div>
+				<div id="map"></div>
+				<div id="reportRecyclingButton" onclick="showRecyclingReport()">
+					<h3>Add Recycling Bin</h3>
+				</div>
 			</div>
 		</div>
-
-		<!-- <div id="map"></div> -->
 
 		<div id="reportRecyclingWindow">
 			<p> If you're in a building, what floor are you on? </p>
@@ -86,6 +87,8 @@
 					<h3>Submit</h3>
 				</div>
 		</div>
+
+		<div id="transitionFooter"></div>
 
 		<div id="footer">
 			Copyright 2018 Ecomake Team 9
