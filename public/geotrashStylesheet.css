@@ -40,8 +40,16 @@ a:hover{
 #header{
 	height: 9vh;
 	width: 100%;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid transparent;
 	padding: 0 10vw;
+	padding-top: 1vh;
+	padding-bottom: 1vh;
+	background-color: lightgreen;
+}
+
+#transitionHeader {
+	height: 2vh;
+	background-image: linear-gradient(lightgreen, #90DDD7);
 }
 
 #logo{
@@ -69,14 +77,22 @@ img{
 	font-size: 27px;
 }
 
+#main {
+	background-image: url("../Images/wallpaper.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+}
+
 #findRecyclingWindow{
 	height: 80vh;
 	width: 100%;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid transparent;
 }
 
 #findRecyclingWindow p{
-	margin-top: 2vh;
+	padding-top: 2vh;
 	text-align: center;
 }
 
@@ -104,6 +120,7 @@ img{
 	transition: box-shadow 0.3s;
 	cursor: pointer;
 	float: right;
+	background-color: white;
 }
 
 #routeButton:hover{
@@ -132,6 +149,7 @@ img{
 	text-align: center;
 	transition: box-shadow 0.3s;
 	cursor: pointer;
+	background-color: white;
 }
 
 #reportRecyclingButton:hover{
@@ -148,8 +166,10 @@ img{
 	height: 0;
 	overflow: hidden;
 	width: 100%;
-	border-bottom: 1px solid black;
+	background-color: #26AD4F;
+	border-bottom: 1px solid transparent;
 	transition: 0.4s height;
+
 }
 
 #reportRecyclingWindow p{
@@ -179,13 +199,14 @@ img{
 	margin-top: 3vh;
 	width: 6vw;
 	height: 5vh;
-	border: 1px solid black;
+	border: 1px solid transparent;
 	border-radius: 25px;
 	font-size: 12px;
 	line-height: 5vh;
 	text-align: center;
 	transition: box-shadow 0.3s;
 	cursor: pointer;
+	background-color: white;
 }
 
 #reportRecyclingSubmitButton:hover{
@@ -194,8 +215,15 @@ img{
 	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 }
 
+#transitionFooter {
+	height: 2vh;
+	background-image: linear-gradient(#26AD4F, lightgreen);
+}
+
 #footer{
 	height: 9vh;
 	text-align: center;
 	line-height: 9vh;
+	/* border-top: 1px solid transparent; */
+	background-color: lightgreen;
 }
