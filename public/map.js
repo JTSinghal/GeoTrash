@@ -103,5 +103,8 @@ function main(){
     });
     console.log(overlays);
     L.control.layers(overlays).addTo(map);
+    for(var i = 0; i < materials.length; i++){
+        map.addLayer(overlays[materials[i]]);
+    }
 }
 main();
