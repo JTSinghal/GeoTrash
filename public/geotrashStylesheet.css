@@ -227,3 +227,10 @@ img{
 	/* border-top: 1px solid transparent; */
 	background-color: lightgreen;
 }
+.accepts{
+    text-align: left;
+    list-style-type:none;
+}
+h5{
+    font-weight:bold;
+}

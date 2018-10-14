@@ -46,26 +46,31 @@ function findLocation() {
   navigator.geolocation.getCurrentPosition(getlatlng);
 }
 
-dropPin(40.4274, -86.9193, -1, 1);
-dropPin(40.4272, -86.9195, -1, 1);
-dropPin(40.4270, -86.9195, -1, 1);
-dropPin(40.4268, -86.9195, -1, 1);
-dropPin(40.4268, -86.9197, -1, 2);
-
 // Drops recycle pins
 function dropPin(lat, lng, floor, code) {
   console.log([lat, lng, floor, code]);
   var pinIcon = L.icon({
-    iconUrl: 'Images/geoTrashLogo.png',
+    iconUrl: 'Images/GeoTrashLogo.png',
     iconSize:     [38, 38], // size of the icon
     iconAnchor:   [20, 20], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
   });
-  var popupContent = "FILL THIS IN LATER";
+  var loc = "<h5>";
+  if(floor != -1){
+    loc += "Floor "+floor;
+  }else{
+    loc += "Outdoors";
+  }
+  var accepts = decode(code);
+  var acceptsString = "<h5>Accepts:</h5> <ul class=\"accepts\">";
+  for(var i = 0; i < accepts.length; i++){
+    acceptsString += "<li>"+accepts[i]+"</li>";
+  }
 
+  var popupContent = loc+"</h5><br><br>"+acceptsString+"</ul>";
   // L.marker([lat, lng], {icon: pinIcon}).addTo(map).bindPopup(popupContent);
   var pin = L.marker([lat, lng], {icon: pinIcon}).bindPopup(popupContent);
-  sortPins(decode(code), pin);
+  sortPins(accepts, pin);
 }
 
 // Sorts pins into different layer groups
