@@ -4,13 +4,6 @@ import tornado.web as web
 import mysql.connector
 import os
 
-db = mysql.connector.connect(
-    host="localhost",
-    user="geotrash",
-    passwd="ifeelfree",
-    database="geotrash"
-)
-c = db.cursor()
 public_root = os.path.join(os.path.dirname(__file__), 'public')
 images_root = os.path.join(os.path.dirname(__file__), 'Images')
 
@@ -20,7 +13,8 @@ class MainHandler(web.RequestHandler):
 
 class Retrieve(web.RequestHandler):
     def get(self):
-        c.execute("select * from bins")
+        _, c = get_cursor()
+        c.execute("select lat, lon, code, floor from bins")
         r = c.fetchall()
         d = {}
         index = 0
@@ -28,6 +22,7 @@ class Retrieve(web.RequestHandler):
             d[index] = {"lat":i[0], "lng": i[1], "code": i[2], "floor":i[3]}
             index += 1
         self.write(d)
+        c.close()
 
 class PostHandler(web.RequestHandler):
     def post(self):
@@ -37,9 +32,21 @@ class PostHandler(web.RequestHandler):
         floor = self.get_argument('floor')
         sql = "INSERT INTO bins (lat, lon, code, floor) values (%s, %s, %s, %s)"
         val = (lat, lon, code, floor)
+        db, c = get_cursor()
         c.execute(sql, val)
         db.commit()
+        c.close()
 
+def get_cursor():
+
+    db = mysql.connector.connect(
+        host="localhost",
+        user="geotrash",
+        passwd="ifeelfree",
+        database="geotrash"
+    )
+    c = db.cursor()
+    return db, c
 def make_app():
 
     return web.Application([
@@ -52,7 +59,11 @@ def make_app():
     ])
 def main():
     app = make_app()
-    app.listen(6969)
+    http_server = tornado.httpserver.HTTPServer(app, ssl_options={
+        "certfile": "/usr/lib/ssl/certs/cert.pem",
+        "keyfile": "/usr/lib/ssl/certs/key.pem",
+    })
+    http_server.listen(8443)
     tornado.ioloop.IOLoop.current().start()
 if __name__ == "__main__":
     main()
