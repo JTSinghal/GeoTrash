@@ -199,3 +199,10 @@ img{
 	text-align: center;
 	line-height: 9vh;
 }
+.accepts{
+    text-align: left;
+    list-style-type:none;
+}
+h5{
+    font-weight:bold;
+}
