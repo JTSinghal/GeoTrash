@@ -65,6 +65,8 @@ function addBin(){
 		lon: curr.lng,
 		code: codeToSend,
 		floor: floorToSend
+	}, function(){
+	    location.reload();
 	});
 }
 
