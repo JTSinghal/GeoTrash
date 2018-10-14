@@ -54,6 +54,7 @@ dropPin(40.4268, -86.9197, -1, 2);
 
 // Drops recycle pins
 function dropPin(lat, lng, floor, code) {
+  console.log([lat, lng, floor, code]);
   var pinIcon = L.icon({
     iconUrl: 'Images/geoTrashLogo.png',
     iconSize:     [38, 38], // size of the icon
@@ -70,9 +71,8 @@ function dropPin(lat, lng, floor, code) {
 // Sorts pins into different layer groups
 function sortPins(info, pin) {
   for(var i = 0; i < info.length; i++){
-       //console.log(info[i]);
-       pin.addTo(overlays[info[i]]); 
-       //console.log(overlays[info[i]])
+       overlays[info[i]].addLayer(pin);
+      // pin.addTo(overlays[info[i]]); 
   }
 }
 
@@ -96,6 +96,7 @@ function main(){
             dropPin(bins[i].lat, bins[i].lng, bins[i].floor, bins[i].code);
         }
     });
+    console.log(overlays);
     L.control.layers(overlays).addTo(map);
 }
 main();
